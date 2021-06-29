@@ -1,0 +1,77 @@
+import { createGlobalStyle } from "styled-components";
+
+export const globalColors = {
+  stColor: '#fff',
+  ndColor: '#fff',
+  rdColor: '#fff',
+  white: '#f5f6f8',
+  gray: '#999',
+  gray2: '#777',
+  gray3: '#555',
+  text: '#3b3b3b',
+  dark: '#2a2a2a',
+  black: '#171717'
+}
+
+export const globalStyleFunctions = {
+  flexRow,
+  flexColumn
+}
+
+export const GlobalStyles = createGlobalStyle`
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: ${globalColors.text};
+  }
+
+  button, input, select, textarea{
+    border: none;
+    outline-style: none;
+  }
+
+  button, input[type="submit"], select, a{
+    cursor: pointer;
+  }
+
+  a, a:visited, a:hover, a:active {
+    color: currentColor;
+    text-decoration: underline;
+  }
+
+  ol, ul { list-style: none;}
+
+  body{
+    background: ${globalColors.white};
+  }
+`
+
+
+function flexRow(horizontalAlignment: JustifyContent, verticalAlginment: AlignItems){
+  return 'display: flex;' +
+    'flex-direction: row;' +
+    `justify-content: ${horizontalAlignment};` +
+    `align-items: ${verticalAlginment};`
+}
+
+function flexColumn(horizontalAlignment: AlignItems, verticalAlginment: JustifyContent){
+  return 'display: flex;' +
+    'flex-direction: column;' +
+    `justify-content: ${horizontalAlignment};` +
+    `align-items: ${verticalAlginment};`
+}
+
+type JustifyContent = 
+  'flex-start' |
+  'center' |
+  'flex-end' |
+  'space-evenly' |
+  'space-around' |
+  'space-between'
+
+type AlignItems =
+  'flex-start' |
+  'center' |
+  'flex-end'
